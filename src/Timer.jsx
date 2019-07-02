@@ -9,6 +9,9 @@ class Timer extends Component {
     this.coolingDownTime = 300 * this.multiplier;
 
     this.interval = null;
+    this.walkAudio = null;
+    this.runAudio = null;
+    this.finishAudio = null;
 
     this.state = {
       runningTime: 60 * this.multiplier,
@@ -41,7 +44,7 @@ class Timer extends Component {
         60} minutes`
     });
 
-    // walkNotification.play();
+    this.walkAudio.play();
 
     setTimeout(this.nextSeries, this.warmingUpTime);
 
@@ -57,7 +60,7 @@ class Timer extends Component {
           this.multiplier /
           60} minutes`
       });
-      // runNotification.play();
+      this.runAudio.play();
 
       setTimeout(() => {
         this.setState({
@@ -65,7 +68,7 @@ class Timer extends Component {
             this.multiplier /
             60} minutes`
         });
-        // walkNotification.play();
+        this.walkAudio.play();
 
         setTimeout(this.nextSeries, walkingTime);
       }, runningTime);
@@ -85,7 +88,7 @@ class Timer extends Component {
           message: "Finish!"
         });
         clearInterval(this.interval);
-        // endNotification.play();
+        this.endAudio.play();
       }, this.coolingDownTime);
     }
   };
@@ -126,13 +129,13 @@ class Timer extends Component {
         <p>{message}</p>
         <p>{timer}</p>
 
-        <audio id="walk!">
+        <audio id="walk!" ref={(elem) => this.walkAudio = elem}>
           <source src="audios/walk.mp3" type="audio/mpeg" />
         </audio>
-        <audio id="run!">
+        <audio id="run!" ref={(elem) => this.runAudio = elem}>
           <source src="audios/run.mp3" type="audio/mpeg" />
         </audio>
-        <audio id="finish!">
+        <audio id="finish!" ref={(elem) => this.finishAudio = elem}>
           <source src="audios/end.wav" type="audio/mpeg" />
         </audio>
       </div>
