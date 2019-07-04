@@ -130,13 +130,13 @@ class Timer extends Component {
         <p>{timer}</p>
 
         <audio id="walk!" ref={(elem) => this.walkAudio = elem}>
-          <source src="audios/walk.mp3" type="audio/mpeg" />
+          <source src="%PUBLIC_URL%/audios/walk.mp3" type="audio/mpeg" />
         </audio>
         <audio id="run!" ref={(elem) => this.runAudio = elem}>
-          <source src="audios/run.mp3" type="audio/mpeg" />
+          <source src="%PUBLIC_URL%/audios/run.mp3" type="audio/mpeg" />
         </audio>
         <audio id="finish!" ref={(elem) => this.finishAudio = elem}>
-          <source src="audios/end.wav" type="audio/mpeg" />
+          <source src="%PUBLIC_URL%/audios/end.wav" type="audio/mpeg" />
         </audio>
       </div>
     );
